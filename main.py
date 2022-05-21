@@ -7,20 +7,27 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 print("Welcome to the PyPassword Generator!")
+try:
+    nr_letters = int(input("How many letters would you like in your password?\n"))
+    if nr_letters > len(letters):
+        print(f'You can use {len(letters)} individual characters.')
+        nr_letters = len(letters)
 
-nr_letters = int(input("How many letters would you like in your password?\n"))
-if nr_letters > len(letters):
-    print(f'You can use {len(letters)} individual characters.')
+    nr_numbers = int(input(f"How many numbers would you like?\n"))
+    if nr_numbers > len(numbers):
+        print(f'You can use {len(numbers)} individual characters.')
+        nr_numbers = len(numbers)
+
+    nr_symbols = int(input(f"How many symbols would you like?\n"))
+    if nr_symbols > len(symbols):
+        print(f'You can use {len(symbols)} individual characters.')
+        nr_symbols = len(symbols)
+
+except:
+    print(f'Wrong input. Generated the longest password ({len(letters)} letters, {len(numbers)} numbers '
+          f'and {len(symbols)} symbols).')
     nr_letters = len(letters)
-
-nr_numbers = int(input(f"How many numbers would you like?\n"))
-if nr_numbers > len(numbers):
-    print(f'You can use {len(numbers)} individual characters.')
     nr_numbers = len(numbers)
-
-nr_symbols = int(input(f"How many symbols would you like?\n"))
-if nr_symbols > len(symbols):
-    print(f'You can use {len(symbols)} individual characters.')
     nr_symbols = len(symbols)
 
 
@@ -40,8 +47,6 @@ for symbol in range (nr_symbols):
     r = random.randint(0, len(symbols)-1)
     your_chars.append(symbols[r])
     symbols.remove(symbols[r])
-
-print(your_chars)
 
 random.shuffle(your_chars)
 
